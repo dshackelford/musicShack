@@ -30,6 +30,7 @@
 		6975BD761D7DFFB30012B029 /* genius.png in Resources */ = {isa = PBXBuildFile; fileRef = 6975BD751D7DFFB30012B029 /* genius.png */; };
 		6975BD781D7E00910012B029 /* upnext.png in Resources */ = {isa = PBXBuildFile; fileRef = 6975BD771D7E00910012B029 /* upnext.png */; };
 		6975BD7A1D7E04B10012B029 /* SubInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6975BD791D7E04B10012B029 /* SubInfoTableViewController.m */; };
+		6975BD831D85E4CB0012B029 /* SubPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6975BD821D85E4CB0012B029 /* SubPlaylistViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,8 @@
 		6975BD771D7E00910012B029 /* upnext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upnext.png; sourceTree = "<group>"; };
 		6975BD791D7E04B10012B029 /* SubInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubInfoTableViewController.m; sourceTree = "<group>"; };
 		6975BD7B1D7E05010012B029 /* SubInfoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubInfoTableViewController.h; sourceTree = "<group>"; };
+		6975BD821D85E4CB0012B029 /* SubPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubPlaylistViewController.m; sourceTree = "<group>"; };
+		6975BD841D85E4D30012B029 /* SubPlaylistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubPlaylistViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,18 +198,36 @@
 				6975BD681D7DEB630012B029 /* MusicViewController.m */,
 				6975BD701D7DFB450012B029 /* SideBarView.h */,
 				6975BD6E1D7DFB350012B029 /* SideBarView.m */,
+				6975BD861D85E4DE0012B029 /* Artists */,
+				6975BD851D85E4D70012B029 /* Playlists */,
 				6975BD281D7D3DE70012B029 /* SongsViewController.h */,
 				6975BD291D7D3DE70012B029 /* SongsViewController.m */,
-				6975BD5C1D7DDFE60012B029 /* ArtistsViewController.h */,
-				6975BD5A1D7DDFDC0012B029 /* ArtistsViewController.m */,
-				6975BD7B1D7E05010012B029 /* SubInfoTableViewController.h */,
-				6975BD791D7E04B10012B029 /* SubInfoTableViewController.m */,
-				6975BD621D7DE8220012B029 /* PlaylistsViewController.h */,
-				6975BD631D7DE82B0012B029 /* PlaylistsViewController.m */,
 				6975BD671D7DEAC10012B029 /* AlbumsViewController.h */,
 				6975BD651D7DEAB90012B029 /* AlbumsViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6975BD851D85E4D70012B029 /* Playlists */ = {
+			isa = PBXGroup;
+			children = (
+				6975BD621D7DE8220012B029 /* PlaylistsViewController.h */,
+				6975BD631D7DE82B0012B029 /* PlaylistsViewController.m */,
+				6975BD841D85E4D30012B029 /* SubPlaylistViewController.h */,
+				6975BD821D85E4CB0012B029 /* SubPlaylistViewController.m */,
+			);
+			name = Playlists;
+			sourceTree = "<group>";
+		};
+		6975BD861D85E4DE0012B029 /* Artists */ = {
+			isa = PBXGroup;
+			children = (
+				6975BD5C1D7DDFE60012B029 /* ArtistsViewController.h */,
+				6975BD5A1D7DDFDC0012B029 /* ArtistsViewController.m */,
+				6975BD7B1D7E05010012B029 /* SubInfoTableViewController.h */,
+				6975BD791D7E04B10012B029 /* SubInfoTableViewController.m */,
+			);
+			name = Artists;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +376,7 @@
 				6975BD641D7DE82B0012B029 /* PlaylistsViewController.m in Sources */,
 				6975BD6F1D7DFB350012B029 /* SideBarView.m in Sources */,
 				6975BD271D7D3DE70012B029 /* AppDelegate.m in Sources */,
+				6975BD831D85E4CB0012B029 /* SubPlaylistViewController.m in Sources */,
 				6975BD241D7D3DE70012B029 /* main.m in Sources */,
 				6975BD5B1D7DDFDC0012B029 /* ArtistsViewController.m in Sources */,
 			);

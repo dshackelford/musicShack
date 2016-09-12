@@ -15,6 +15,8 @@
 {
     [super viewDidLoad];
     
+    songs = [[MPMediaQuery songsQuery] items];
+    
     self.title = @"SONGS";
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -27,9 +29,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    MPMediaQuery *songsQuery = [MPMediaQuery songsQuery];
-    NSArray *songs = [songsQuery items];
-    
     return [songs count];
 }
 
@@ -37,15 +36,11 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     
-    // Configure the cell...
-    
-    MPMediaQuery *songsQuery = [MPMediaQuery songsQuery];
-    NSArray *songs = [songsQuery items];
-    
     MPMediaItem *rowItem = [songs objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [rowItem valueForProperty:MPMediaItemPropertyTitle];
     cell.detailTextLabel.text = [rowItem valueForProperty:MPMediaItemPropertyArtist];
+    
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }

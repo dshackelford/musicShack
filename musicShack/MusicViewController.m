@@ -15,6 +15,8 @@
 {
     [super viewDidLoad];
     
+    isPlaying = NO;
+    
     screenSize = [UIScreen mainScreen].bounds.size;
     
     albumArtwork = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 4*screenSize.width/5, 4*screenSize.width/5)];
@@ -33,22 +35,45 @@
     
     sideBarView = [[SideBarView alloc] initWithFrame:CGRectMake(4*screenSize.width/5, 0, screenSize.width/5,4*screenSize.width/5)];
     [self.view addSubview:sideBarView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playSong:) name:@"playSong" object:nil];
+    
+    musicPlayer = [MPMusicPlayerController systemMusicPlayer];
+    
 }
--(void)playMusic
+
+-(void)playSong:(NSNotification*)notification
 {
-    MPMediaQuery *songsQuery = [MPMediaQuery songsQuery];
-    NSArray *songs = [songsQuery items];
-    
-    //    int selectedIndex = [[self.tableView indexPathForSelectedRow] row];
-    
-    MPMediaItem *selectedItem = [[songs objectAtIndex:1] representativeItem];
-    
-    MPMusicPlayerController *musicPlayer = [MPMusicPlayerController systemMusicPlayer];
-    
-    [musicPlayer setQueueWithItemCollection:[MPMediaItemCollection collectionWithItems:[songsQuery items]]];
-    [musicPlayer setNowPlayingItem:selectedItem];
-    
+    MPMediaItem* selectedSong = notification.object;
+    [musicPlayer setNowPlayingItem:selectedSong];
     [musicPlayer play];
+    
+    isPlaying = YES;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if(isPlaying)
+    {
+        UIImage *albumArtworkImage = NULL;
+        MPMediaItemArtwork *itemArtwork = musicPlayer.nowPlayingItem.artwork;
+        
+        if (itemArtwork != nil)
+        {
+            albumArtworkImage = [itemArtwork imageWithSize:albumArtwork.frame.size];
+             albumArtwork.image = albumArtworkImage;
+        }
+        else
+        { // no album artwork
+            NSLog(@"No ALBUM ARTWORK");
+        }
+        
+        songTitle = musicPlayer.nowPlayingItem.title;
+        artistTitle = musicPlayer.nowPlayingItem.artist;
+        albumTitle = musicPlayer.nowPlayingItem.albumTitle;
+        
+        [songTable reloadData];
+    }
 }
 
 #pragma mark - Table Delegate
@@ -84,7 +109,19 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     
-    cell.textLabel.text = [songTableLables objectAtIndex:indexPath.row];
+    if (indexPath.row == 1)
+    {
+        cell.textLabel.text = songTitle;
+    }
+    else if(indexPath.row == 2)
+    {
+        cell.textLabel.text = artistTitle;
+    }
+    else if(indexPath.row == 3)
+    {
+        cell.textLabel.text = albumTitle;
+    }
+    
     cell.textLabel.font = [UIFont systemFontOfSize:15];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;

@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
+#import "SubPlaylistViewController.h"
+
 @interface PlaylistsViewController : UITableViewController
 {
-    
+    NSArray* playlists;
 }
+
+@property int selectedIndex;
 
 @end

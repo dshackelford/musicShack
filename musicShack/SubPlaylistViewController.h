@@ -1,29 +1,33 @@
 //
-//  SubInfoTableViewController.h
+//  SubPlaylistViewController.h
 //  musicShack
 //
-//  Created by Dylan Shackelford on 9/5/16.
+//  Created by Dylan Shackelford on 9/11/16.
 //  Copyright © 2016 Dylan Shackelford. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-//#import "SubInfoTableViewController.h"
 
-@interface SubInfoTableViewController : UITableViewController
+@interface SubPlaylistViewController : UITableViewController
 {
-    NSMutableArray* tableData;
+    NSArray* tableData;
     NSMutableArray* sectionData;
+    
+    MPMediaPlaylist* playlist;
     
     int sectionHeader;
     
     NSString* title;
 }
 
--(void)setTableData:(NSMutableArray*)dataInit;
+-(void)setTableData:(NSArray*)dataInit;
+
 -(void)setSectionData:(NSMutableArray*)dataInit;
 
 -(void)setTitle:(NSString*)titleInit;
+
+-(void)setPlaylist:(MPMediaPlaylist*)playlistInit;
 
 @end

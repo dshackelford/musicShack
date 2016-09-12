@@ -10,7 +10,9 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface SongsViewController : UITableViewController
-
+{
+    NSArray* songs;
+}
 
 @end
 

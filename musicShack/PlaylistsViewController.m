@@ -15,6 +15,9 @@
 {
     self.title = @"PLAYLISTS";
     [super viewDidLoad];
+    
+    MPMediaQuery *query = [MPMediaQuery playlistsQuery];
+    playlists = [query collections];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -24,25 +27,45 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    MPMediaQuery *songsQuery = [MPMediaQuery playlistsQuery];
-    NSArray *songs = [songsQuery collections];
-    
-    return [songs count];
+    return [playlists count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
     
-    MPMediaQuery *songsQuery = [MPMediaQuery playlistsQuery];
-    NSArray *songs = [songsQuery collections];
-    
-    MPMediaItem *rowItem = [songs objectAtIndex:indexPath.row];
+    MPMediaItem *rowItem = [playlists objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [rowItem valueForProperty:MPMediaPlaylistPropertyName];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedIndex = indexPath.row;
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES]; //show albums by artists
+    [self performSegueWithIdentifier:@"showPlaylist" sender:self];
+    
+}
+
+//use this for passing information to the new view controller
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //segmented control settings
+    if ([segue.identifier isEqualToString:@"showPlaylist"])
+    {
+        MPMediaPlaylist* aPlaylist = [playlists objectAtIndex:_selectedIndex];
+
+        SubPlaylistViewController *destViewController = segue.destinationViewController;
+
+        [destViewController setTitle:aPlaylist.name];
+        [destViewController setTableData:aPlaylist.items];
+        [destViewController setPlaylist:aPlaylist];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

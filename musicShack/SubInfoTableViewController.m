@@ -100,10 +100,13 @@
     
     int selectedRow = indexPath.row;
 
+//    NSArray *songs = [MPMediaQuery songsQuery];
+    
+//    MPMediaItem *selectedItem = [[songs objectAtIndex:indexPath.row] representativeItem];
     
     NSLog(@"touch on row %d", selectedRow);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"selectSong" object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"playSong" object:nil];
     
 }
 

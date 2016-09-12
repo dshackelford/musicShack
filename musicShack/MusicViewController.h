@@ -22,9 +22,13 @@
     
     CGSize screenSize;
     
-    NSArray* songTableLables;
+    NSMutableArray* songTableLables;
     
     SideBarView* sideBarView;
+    
+    MPMusicPlayerController *musicPlayer;
+    
+    BOOL isPlaying;
 }
 
 @end
