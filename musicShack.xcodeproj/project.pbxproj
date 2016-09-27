@@ -297,6 +297,7 @@
 				TargetAttributes = {
 					6975BD1E1D7D3DE70012B029 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 5C7WP8NCS7;
 					};
 					6975BD371D7D3DE70012B029 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -519,6 +520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5C7WP8NCS7;
 				INFOPLIST_FILE = musicShack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DshackTech.musicShack;
@@ -530,6 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5C7WP8NCS7;
 				INFOPLIST_FILE = musicShack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = DshackTech.musicShack;

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MainTabBarController.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @implementation MainTabBarController
 
@@ -15,9 +16,19 @@
 {
     [super viewDidLoad];
     
-    self.selectedIndex = 0;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSelectSong:) name:@"selectSong" object:nil];
+    
+    MPMusicPlayerController *musicPlayer;
+    musicPlayer = [MPMusicPlayerController systemMusicPlayer];
+    
+//    if(musicPlayer.nowPlayingItem == nil)
+//    {
+//        self.selectedIndex = 1;
+//    }
+//    else
+//    {
+//        self.selectedIndex = 0;
+//    }
 }
 
 -(void)didSelectSong:(id)sender

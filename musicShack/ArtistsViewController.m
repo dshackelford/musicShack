@@ -16,6 +16,7 @@
     self.title = @"ARTISTS";
     
     MPMediaQuery *songsQuery = [MPMediaQuery artistsQuery];
+    artists = [[NSArray alloc] init];
     artists = [songsQuery collections];
     
     [super viewDidLoad];
